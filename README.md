@@ -7,13 +7,14 @@
 * Use Foreign Keys to connect multiple tables in SQLite
 * Build a database with a one to one relationship
 * Build a database with a one to many relationship
+* Query a database
 * Make a Join Table SQL query (Luxury Goal)
 
 ---
 
 ### Context
 
-* We've done CRUD with a single table database. That's all great but as our data becomes bigger we are going to need more tables for organization. This is where the relationships come in.
+* We've done CRUD with a single table database. That's all great but as our data becomes bigger we are going to need more tables for organization.
 
 ---
 
@@ -22,13 +23,13 @@
 ##### Part 1 - ERDs / Relationships Review
 
 * What are some examples of a one to one relationship? How about a one to many relationship?
-	* One to One
-		* A person has one SSN
-		* A person has one passport
-	* One to Many
-		* A person has one birthday / A birthday has many people
-		* A person has one gym / A gym has many members
-		* A pet has one owner / A person has many pets
+  * One to One
+    * A person has one SSN
+    * A person has one passport
+  * One to Many
+    * A person has one birthday / A birthday has many people
+    * A person has one gym / A gym has many members
+    * A pet has one owner / A person has many pets
 
 ***One to One***
 
@@ -43,14 +44,14 @@
 ***Five Min Exercise***
 
 * Take the examples above and draw out an ERD of them. 
-* We'll be using the ERD diagram website: (put website here)
+* We'll be using the ERD diagram website: [http://ondras.zarovi.cz/sql/demo/](http://ondras.zarovi.cz/sql/demo/)
 
-***Notes***
+***Hints***
 
 * Which table takes precedent over the other in a relational database?
 * Is there a parent table and a child table?
 
-	
+  
 ##### Part 2 - SQL Foriegn Keys
 
 * Foreign Keys allow us to reference one table to another.
@@ -82,17 +83,17 @@ CREATE TABLE members(
 * Add the following gyms
 
 ```
-INSERT INTO gyms (name, city, rate) VALUES ('Golds Gym', 'Los Angelos', 40), ('Equinox', 'New York', 150), ('Planet Fitness', 'New Jersey', 15);
+INSERT INTO gyms (name, city, rate) VALUES ('Golds Gym', 'Los Angeles', 40), ('Equinox', 'New York', 150), ('Planet Fitness', 'New Jersey', 15);
 ```
 * Lets make sure we got everything right
 
 ```
-SELECT * FROM garages;
+SELECT * FROM gyms;
 ```
 * Add the following members
 
 ```
-INSERT INTO members (gym_id, first_name, last_name, age) VALUES (1, 'Arnold', 'Schwarzenegger', 100), (2, "Jason", "Ng", 27), (2, "Robert", "Swallow", 21), (2, "Brian", "McHugh", 21), (3, "Luke", "Skywalker", 89);
+INSERT INTO members (gym_id, first_name, last_name, age) VALUES (1, 'Arnold', 'Schwarzenegger', 100), (2, "Jason", "Ng", 27), (2, "Robert", "Swallow", 21), (2, "Jeff", "Maxim", 31), (3, "Luke", "Skywalker", 89);
 ```
 * Lets make sure we got everything right here
 
@@ -105,4 +106,33 @@ SELECT * FROM members;
 SELECT members.first_name FROM members, gyms WHERE members.gym_id=2;
 ```
 
+***Challenge Question***
+* Let's say we're at the point in our Python code where we've got the name of a gym stored in a variable, like below:
+```
+name = 'Equinox'
+```
+* And from here, I want to find the members who belong to that Gym.
+* I would probably do a two step process. **First**, I would query gyms to find the ID of the gym:
+```
+gym_id = "SELECT id FROM gyms WHERE name = 'Equinox';"
+```
+* And based on our example database, `gym_id = 2 ` at this point.
+* **Second**, I would query the members table, and find all members who have `2` in their `gym_id` column, as shown below:
+```
+members_of_gym = "SELECT * FROM members WHERE gym_id=gym_id;"
+```
+* And this would return to me all members who belong to the gym called `Equiniox`. 
+* My problem with this is that it's two steps. **First** we query the gym table, and **second** we query the members table. Is there a way to do this in one step? All I could think of was this:
+```
+members_of_gym = SELECT * FROM members WHERE gym_id=(SELECT id FROM gyms WHERE name = 'Equinox');
+```
+* **Spoiler alert! Solution below!**
 
+* The **solution** is to use an `AND` SQL statement:
+```
+members_of_gym = '''
+  SELECT *
+  FROM member, gyms
+  WHERE members.gym_id=gyms.id AND gyms.name='Equinox';
+'''
+```

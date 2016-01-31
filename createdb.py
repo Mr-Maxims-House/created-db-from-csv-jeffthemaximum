@@ -15,7 +15,7 @@ cursor.execute('''
 
 cursor.execute('''
   CREATE TABLE members(
-    member_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     gym_id INTEGER,
     first_name TEXT,
     last_name TEXT,
