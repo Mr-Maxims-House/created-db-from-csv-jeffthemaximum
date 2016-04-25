@@ -1,0 +1,46 @@
+How many people are from California?
+14 SELECT count(*) FROM users WHERE state = "CA";
+
+Who has the most page views? How many do they have, and where are they from?
+
+SELECT * FROM users WHERE page_views in (SELECT max(page_views) FROM users);
+179|Edison Mcintyre|hattie.harriet@far.me|Mauriceville|ME|2014-06-02|19937
+
+ Who has the least page views? How many do they have and where are they from?
+ SELECT * FROM users WHERE page_views in (SELECT min(page_views) FROM users);
+ 477|Hattie Ross|jeffery.travis.jeff@laugh.info|Hubbard|MA|2014-07-19|16
+
+Who are the most recent visitors to the site?(at least 3)
+SELECT id, name, last_visit FROM users ORDER BY last_visit
+196|Otha Ortiz|2014-10-08
+259|Selina Hardy|2014-10-08
+364|Terrance Allen|2014-10-08
+
+Who was the first visitor?
+163|Woodrow Duffy|2013-10-08
+
+SELECT id, name MIN(last_visit) FROM users;
+
+Who has an email address with the domain 'horse.edu'?
+
+SELECT id, name, email FROM users WHERE email LIKE '%horse.edu%';
+11|Fern Byers|lino.jarod@hornhorse.edu
+400|Valentine Gonzales|steve.louis.jeremy@horse.edu
+
+How many people are from the city Graford?
+
+SELECT id, name FROM users WHERE city = "Graford";
+76|Nelly Beach
+122|Corinne Patton
+496|Paulina Rankin
+
+What are the names of all the cities that start with the letter V, in alphabetical order?
+
+SELECT city FROM users WHERE city LIKE 'V%' GROUP BY city;
+Valley View
+Van
+Vega
+Victoria
+
+
+
