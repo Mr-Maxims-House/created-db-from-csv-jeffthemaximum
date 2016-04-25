@@ -1,0 +1,52 @@
+
+"""How many people are from California?
+
+SELECT count(*) FROM users WHERE "state" = "CA"; 14
+
+Who has the most page views? How many do they have, and where are they from?
+
+SELECT * FROM users WHERE "page_views" in (SELECT max("page_views") FROM users); Edison Mcintyre, 19937, Mauriceville|ME
+
+Who has the least page views? How many do they have and where are they from?
+
+SELECT * FROM users WHERE "page_views" in (SELECT min("page_views") FROM users); Hattie Ross, 16, Hubbard|MA
+
+Who are the most recent visitors to the site?(at least 3)
+
+SELECT id, name, last_visit FROM users ORDER BY last_visit; 196|Otha Ortiz|2014-10-08 259|Selina Hardy|2014-10-08 364|Terrance Allen|2014-10-08
+
+Who was the first visitor?
+
+SELECT id, name, MIN(last_visit) FROM users; 163|Woodrow Duffy|2013-10-08
+
+Who has an email address with the domain 'horse.edu'?
+
+SELECT id, name, email FROM users WHERE email LIKE '%horse.edu%'; 11|Fern Byers|lino.jarod@hornhorse.edu 400|Valentine Gonzales|steve.louis.jeremy@horse.edu
+
+How many people are from the city Graford?
+
+SELECT name, id FROM users WHERE city = 'Graford'; Nelly Beach|76 Corinne Patton|122 Paulina Rankin|496
+
+What are the names of all the cities that start with the letter V, in alphabetical order?
+
+SELECT city FROM users WHERE city LIKE 'V%' GROUP BY city; Valley View Van Vega Victoria
+
+What are the names and home cities for people searched for the word "drain"?
+
+SELECT users.id, users.name, users.city, user_searches.user_id, user_searches.term_id, search_terms.id, search_terms.word FROM users JOIN user_searches ON user_searches.user_id = users.id JOIN search_terms ON user_searches.term_id = search_terms.id WHERE search_terms.word = 'drain'; 76|Nelly Beach|Graford|76|201|201|drain 172|Penelope Stein|Runaway Bay|172|201|201|drain 216|Tisha Gill|Bausell and Ellis|216|201|201|drain 218|Rolando Crowley|Buda|218|201|201|drain
+
+How many times was "trousers" a search term?
+
+SELECT count(*) FROM user_searches JOIN search_terms ON user_searches.term_id = search_terms.id WHERE search_terms.word = 'trousers'; 2
+
+What were the search terms used by visitors who last visited on August 22 2014?
+
+SELECT users.last_visit, search_terms.id, search_terms.word, user_searches.term_id, user_searches.user_id, user_searches.id, users.name FROM users JOIN user_searches ON users.id = user_searches.user_id JOIN search_terms ON user_searches.term_id = search_terms.id WHERE users.last_visit = '2014-08-22'; 2014-08-22|135|sweet|135|51|152|Damien Grace 2014-08-22|136|or|136|51|153|Damien Grace 2014-08-22|137|left|137|51|154|Damien Grace 2014-08-22|106|word|106|51|155|Damien Grace 2014-08-22|138|female|138|51|156|Damien Grace 2014-08-22|381|ball|381|169|510|Dennis Velazquez
+
+What was the most frequently used search term by people from Idaho?
+
+SELECT users.name, users.state, search_terms.word, count(word) FROM users JOIN user_searches ON users.id = user_searches.user_id JOIN search_terms ON user_searches.term_id = search_terms.id WHERE state = 'ID' GROUP BY word; Douglas Matthews|ID|stop|1 Margo Logan|ID|street|1 Margo Logan|ID|tongue|2 Adrian William|ID|up|1
+
+What is the name of user 391, and what are his search terms?
+
+SELECT users.name, user_searches.id, user_searches.term_id, user_searches.user_id, search_terms.word, search_terms.id FROM users JOIN user_searches ON users.id = user_searches.user_id JOIN search_terms ON user_searches.term_id = search_terms.id WHERE users.id = 391; Stan Alston|1179|623|391|ornament|623 Stan Alston|1180|217|391|heat|217 Stan Alston|1181|624|391|sex|624 Stan Alston|1182|625|391|secret|625 Stan Alston|1183|626|391|dry|626"""
