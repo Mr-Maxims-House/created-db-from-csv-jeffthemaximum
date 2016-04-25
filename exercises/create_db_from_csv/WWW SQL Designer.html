@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0033)http://ondras.zarovi.cz/sql/demo/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>WWW SQL Designer</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1">
+	
+	<link rel="stylesheet" type="text/css" href="./WWW SQL Designer_files/style.css" media="all">     
+	<!--[if IE 6]><link rel="stylesheet" type="text/css" href="styles/ie6.css" /><![endif]-->
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="styles/ie7.css" /><![endif]-->
+	<link rel="stylesheet" href="./WWW SQL Designer_files/print.css" type="text/css" media="print">
+	<script type="text/javascript" src="./WWW SQL Designer_files/dropbox.min.js"></script>
+
+	<script src="./WWW SQL Designer_files/oz.js"></script>
+	<script src="./WWW SQL Designer_files/config.js"></script>
+	<script src="./WWW SQL Designer_files/globals.js"></script>
+	<script src="./WWW SQL Designer_files/visual.js"></script>
+	<script src="./WWW SQL Designer_files/row.js"></script>
+	<script src="./WWW SQL Designer_files/table.js"></script>
+	<script src="./WWW SQL Designer_files/relation.js"></script>
+	<script src="./WWW SQL Designer_files/key.js"></script>
+	<script src="./WWW SQL Designer_files/rubberband.js"></script>
+	<script src="./WWW SQL Designer_files/map.js"></script>
+	<script src="./WWW SQL Designer_files/toggle.js"></script>
+	<script src="./WWW SQL Designer_files/io.js"></script>
+	<script src="./WWW SQL Designer_files/tablemanager.js"></script>
+	<script src="./WWW SQL Designer_files/rowmanager.js"></script>
+	<script src="./WWW SQL Designer_files/keymanager.js"></script>
+	<script src="./WWW SQL Designer_files/window.js"></script>
+	<script src="./WWW SQL Designer_files/options.js"></script>
+	<script src="./WWW SQL Designer_files/wwwsqldesigner.js"></script>
+
+    <link rel="shortcut icon" href="http://ondras.zarovi.cz/favicon.ico" type="image/x-icon">
+</head>
+
+<body style="visibility: visible;">
+	<div id="area" class=""><svg width="2000" height="2000"><path stroke="#000" stroke-width="2" fill="none" d="M 597 351 C 697 351 697 461 797 461"></path></svg><div class="table" style="z-index: 1; left: 499px; top: 319px;"><table><thead><tr><td class="title" colspan="2" title="">users</td></tr></thead><tbody title="" style="background-color: rgb(238, 238, 170);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title primary key">id</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">name</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">email</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">country</div></td><td class="typehint"></td></tr></tbody></table></div><div class="table selected" style="z-index: 2; left: 796px; top: 340px;"><table><thead><tr><td class="title" colspan="2" title="">phone_numbers</td></tr></thead><tbody title="" style="background-color: rgb(238, 238, 170);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title primary key">id</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">cellphone</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">homephone</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(255, 200, 200);"><tr><td><div class="selected" style="display: none;">»&nbsp;</div><div class="title">workphone</div></td><td class="typehint"></td></tr></tbody><tbody title="" style="background-color: rgb(238, 238, 170);"><tr><td><div class="selected">»&nbsp;</div><div class="title">FOREIGN KEY</div></td><td class="typehint"></td></tr></tbody></table></div></div>
+	<div id="controls" style="z-index: 7;">
+		<div id="bar">
+			<div id="toggle" class="on"></div>
+			<input type="button" id="saveload" value="Save / Load">
+
+			<hr>
+
+			<input type="button" id="addtable" value="Add table">
+			<input type="button" id="edittable" value="Edit table">
+			<input type="button" id="tablekeys" value="Keys">
+			<input type="button" id="removetable" value="Remove table">
+			<input type="button" id="aligntables" value="Align tables">
+			<input type="button" id="cleartables" value="Clear tables">
+		
+			<hr>
+		
+			<input type="button" id="addrow" value="Add field">
+			<input type="button" id="editrow" value="Edit field">
+			<input type="button" id="uprow" class="small" value="Up"><input type="button" id="downrow" class="small" value="Down" disabled="">
+			<input type="button" id="foreigncreate" value="Create foreign key" disabled="">
+			<input type="button" id="foreignconnect" value="Connect foreign key" disabled="">
+			<input type="button" id="foreigndisconnect" value="Remove foreign key">
+			<input type="button" id="removerow" value="Remove field">
+		
+			<hr>
+		
+			<input type="button" id="options" value="Options">
+			<a href="https://github.com/ondras/wwwsqldesigner/wiki" target="_blank"><input type="button" id="docs" value="Documentation"></a>
+		</div>
+	
+		<div id="rubberband" style="left: 1271px; top: 386px; width: 0px; height: 0px; visibility: hidden;"></div>
+
+		<div id="minimap"><div class="port" style="z-index: 1; width: 91px; height: 43px; left: 0px; top: 0px;"></div><div class="mini" style="width: 5px; height: 6px; left: 25px; top: 16px;"></div><div class="mini mini_selected" style="width: 8px; height: 7px; left: 40px; top: 17px;"></div></div>
+	
+		<div id="background" style="width: 1905px; height: 934px; left: 0px; top: 0px; visibility: hidden;"></div>
+	
+		<div id="window" style="left: 726px; top: 388px; visibility: hidden;">
+			<div id="windowtitle"><img id="throbber" src="./WWW SQL Designer_files/throbber.gif" alt="Please wait..." title="Please wait..." style="visibility: hidden;">Edit table</div>
+			<div id="windowcontent"><div id="table">
+		<table>
+			<tbody>
+				<tr>
+					<td>
+						<label id="tablenamelabel" for="tablename">Name</label>
+					</td>
+					<td>
+						<input id="tablename" type="text">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label id="tablecommentlabel" for="tablecomment">Comment</label> 
+					</td>
+					<td>
+						<textarea rows="5" cols="40" id="tablecomment"></textarea>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div></div>
+			<input type="button" id="windowok" value="OK">
+			<input type="button" id="windowcancel" value="Cancel">
+		</div>
+	</div> <!-- #controls -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+		var d = new SQL.Designer();
+	</script>
+	
+	
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./WWW SQL Designer_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-383250-9");
+pageTracker._trackPageview();
+} catch(err) {}</script>	
+
+
+
+</body></html>
